@@ -1,11 +1,11 @@
 import requests
-from vlermv import cache, transformers, serializers
+#from vlermv import cache, transformers, serializers
 
-@cache('~/.foundation_maps/cookie', key_transformer = transformers.magic)
+#@cache('~/.foundation_maps/cookie', key_transformer = transformers.magic)
 def cookie(_):
     return requests.head('https://maps.foundationcenter.org')
 
-@cache('~/.foundation_maps/getList', key_transformer = transformers.identity_str)
+#@cache('~/.foundation_maps/getList', key_transformer = transformers.identity_str)
 def getList(cookie):
     url = 'https://maps.foundationcenter.org/web_services/getList.php'
     params = {
