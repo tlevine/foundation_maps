@@ -1,11 +1,13 @@
 import requests
-#from vlermv import cache, transformers, serializers
+from vlermv import cache #, transformers, serializers
 
 #@cache('~/.foundation_maps/cookie', key_transformer = transformers.magic)
 def cookie(_):
+    raise NotImplementedError('You must obtain the cookies manually.')
     return requests.head('https://maps.foundationcenter.org')
 
 #@cache('~/.foundation_maps/getList', key_transformer = transformers.identity_str)
+@cache('~/.foundation_maps/getList')
 def getList(cookie):
     url = 'https://maps.foundationcenter.org/web_services/getList.php'
     params = {
@@ -39,3 +41,15 @@ def getList(cookie):
         'Cookie': cookie,
     }
     return requests.get(url, params = params, headers = headers)
+
+@cache('~/.foundation_maps/getOrganizationProfile')
+def getOrganizationProfile(org_key, cookie = None):
+    url = 'https://maps.foundationcenter.org/web_services/getOrganizationProfile.php'
+    params = {
+        'org_key': org_key,
+        'type': 'ein',
+    }
+    headers = {
+        'cookie': cookie,
+    }
+    return requests.get(url, params = params)
