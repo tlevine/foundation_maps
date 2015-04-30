@@ -1,8 +1,8 @@
 function log_website() $('#profile-modal-website > a').each(function() {
   var href = $(this).attr('href')
 
-  // Easier to copy these logs than the logs in the browser
-  $.get('http://big.dada.pink?' + href)
+  // Easier to copy these server logs than the logs in the browser
+  document.body.innerHTML += '<img src="http://dada.pink/?foundation_maps&href=' + href + '" />'
 })
 
 function click_detail() $('.cell-details > span.table-detail-icon').click()
