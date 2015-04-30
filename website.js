@@ -18,4 +18,4 @@ function page() {
   setTimeout(page, 15000)
 }
 
-page()
+// page()
