@@ -1,5 +1,9 @@
-function log_website() $('#profile-modal-website > a').each(
-  function() console.log($(this).attr('href')))
+function log_website() $('#profile-modal-website > a').each(function() {
+  var href = $(this).attr('href')
+
+  // Easier to copy these logs than the logs in the browser
+  $.get('http://big.dada.pink?' + href)
+})
 
 function click_detail() $('.cell-details > span.table-detail-icon').click()
 
